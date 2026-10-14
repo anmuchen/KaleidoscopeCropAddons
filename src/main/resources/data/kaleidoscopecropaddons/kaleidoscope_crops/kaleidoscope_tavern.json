@@ -1,0 +1,42 @@
+{
+  "mod": "kaleidoscope_tavern",
+  "prefix": "ktv",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_tavern",
+  "discover": false,
+  "crops": [
+    {
+      "id": "grape",
+      "seed": "kaleidoscope_tavern:grapevine",
+      "plant": "kaleidoscope_tavern:grapevine_trellis",
+      "layout": "trellis",
+      "fruit_block": "kaleidoscope_tavern:grape_crop",
+      "fruit_item": "kaleidoscope_tavern:grape",
+      "support_block": "kaleidoscope_tavern:trellis",
+      "soil_tag": "kaleidoscope_tavern:can_grow_grape",
+      "soil_item": "minecraft:dirt"
+    },
+    {
+      "id": "ice_grape",
+      "seed": "kaleidoscope_tavern:grapevine",
+      "plant": "kaleidoscope_tavern:ice_grapevine_trellis",
+      "layout": "trellis",
+      "fruit_block": "kaleidoscope_tavern:ice_grape_crop",
+      "fruit_item": "kaleidoscope_tavern:ice_grape",
+      "support_block": "kaleidoscope_tavern:trellis",
+      "soil_tag": "kaleidoscope_tavern:can_grow_ice_grape",
+      "soil_item": "minecraft:ice"
+    },
+    {
+      "id": "gold_grape",
+      "seed": "kaleidoscope_tavern:grapevine",
+      "plant": "kaleidoscope_tavern:gold_grapevine_trellis",
+      "layout": "trellis",
+      "fruit_block": "kaleidoscope_tavern:gold_grape_crop",
+      "fruit_item": "kaleidoscope_tavern:gold_grape",
+      "support_block": "kaleidoscope_tavern:trellis",
+      "soil_tag": "kaleidoscope_tavern:can_grow_gold_grape",
+      "soil_item": "minecraft:netherrack",
+      "soil_exclude": ["minecraft:magma_block"]
+    }
+  ]
+}

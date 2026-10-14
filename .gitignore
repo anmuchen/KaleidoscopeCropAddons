@@ -1,0 +1,30 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+runs
+run-data
+
+repo
+
+# 第三方依赖 jar（New-Sim-U-Kraft / ldlib2 / taffy / yoga 等）
+# 这些是别人的模组，不随本仓库分发；本地构建请自行放入 libs/ 目录
+libs/

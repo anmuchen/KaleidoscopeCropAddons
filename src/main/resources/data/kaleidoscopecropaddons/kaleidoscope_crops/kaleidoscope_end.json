@@ -1,0 +1,15 @@
+{
+  "mod": "kaleidoscope_end",
+  "prefix": "ke",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_end",
+  "discover": false,
+  "crops": [
+    {
+      "id": "ender_mint",
+      "seed": "kaleidoscope_end:ender_mint",
+      "plant": "kaleidoscope_end:ender_mint",
+      "soil_tag": "kaleidoscope_end:end_stone_growable",
+      "soil_item": "minecraft:end_stone"
+    }
+  ]
+}

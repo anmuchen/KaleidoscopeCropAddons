@@ -1,0 +1,41 @@
+{
+  "mod": "kaleidoscope_dim_wine",
+  "prefix": "kdw",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_dim_wine",
+  "discover": false,
+  "crops": [
+    {
+      "id": "hop",
+      "seed": "kaleidoscope_dim_wine:hop_seed",
+      "plant": "kaleidoscope_dim_wine:hop_crop"
+    },
+    {
+      "id": "crimson_grape",
+      "seed": "kaleidoscope_dim_wine:crimson_grapevine",
+      "plant": "kaleidoscope_dim_wine:crimson_grapevine_trellis",
+      "layout": "trellis",
+      "fruit_block": "kaleidoscope_dim_wine:crimson_grape_crop",
+      "fruit_item": "kaleidoscope_dim_wine:crimson_grape",
+      "support_block": "kaleidoscope_tavern:trellis",
+      "soil_blocks": [
+        "minecraft:crimson_nylium"
+      ],
+      "soil_item": "minecraft:crimson_nylium",
+      "plant_mature": true
+    },
+    {
+      "id": "warped_grape",
+      "seed": "kaleidoscope_dim_wine:warped_grapevine",
+      "plant": "kaleidoscope_dim_wine:warped_grapevine_trellis",
+      "layout": "trellis",
+      "fruit_block": "kaleidoscope_dim_wine:warped_grape_crop",
+      "fruit_item": "kaleidoscope_dim_wine:warped_grape",
+      "support_block": "kaleidoscope_tavern:trellis",
+      "soil_blocks": [
+        "minecraft:warped_nylium"
+      ],
+      "soil_item": "minecraft:warped_nylium",
+      "plant_mature": true
+    }
+  ]
+}

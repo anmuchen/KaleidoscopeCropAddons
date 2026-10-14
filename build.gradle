@@ -1,0 +1,128 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'net.neoforged.moddev' version '2.0.91'
+}
+
+version = mod_version
+group = mod_group_id
+
+repositories {
+    mavenLocal()
+    flatDir { dirs 'libs' }
+}
+
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+neoForge {
+    version = project.neo_version
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    runs {
+        client {
+            client()
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+        }
+    }
+
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    // Host mod: New Sim U Kraft (simukraft) — provides the farmland box and hired farmer system we hook into.
+    // Kept as a local jar because it is not published to any public Maven repository.
+    compileOnly files('libs/New-Sim-U-Kraft-2.2.0-neoforge-1.21.1.jar')
+    localRuntime files('libs/New-Sim-U-Kraft-2.2.0-neoforge-1.21.1.jar')
+    // LDLib2 provides the GUI toolkit used by the farmland box screens (shipped with the host mod).
+    compileOnly files('libs/ldlib2-neoforge-1.21.1-2.2.40-all.jar')
+    // JarJar-nested libraries of LDLib2 (layout engine + style model), needed to compile the screens.
+    compileOnly files('libs/taffy-1.1.4.jar')
+    compileOnly files('libs/yoga-1.0.0.jar')
+
+    // FTB Ultimine — SOFT dependency, compileOnly only.
+    // Its CropLikeRegistry#checkForSingleCropHarvesting runs on EVERY right-click (no Ultimine key
+    // needed) and hijacks any mature CropBlock, resetting it to age 0. That conflicts with our own
+    // right-click harvest, so we veto it for our catalog crops via a soft mixin.
+    // The stub jar is a class-only repack of the real mod (libs/ftb-ultimine-stub.jar) used purely
+    // so the mixin target resolves at compile time; it is NOT shipped or loaded at runtime.
+    compileOnly files('libs/ftb-ultimine-stub.jar')
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    filteringCharset = 'UTF-8'
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

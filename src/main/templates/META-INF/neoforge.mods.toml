@@ -1,0 +1,105 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="GPL 3.0"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="森罗物语：作物附属"
+authors="XiaoLiang小亮 & 安沐尘"
+logoFile="logo.png"
+description='''
+森罗物语：作物附属。让雇佣农民通过农田盒种植森罗物语系列的作物 —— 既能种原版耕地上的，也能种需要特殊土壤（末地石 / 灵魂沙土 / 幽匿催发体 / 菌岩 / 冰块）与葡萄藤架的。
+
+收录：
+· 厨房 —— 番茄、辣椒、生菜
+· 国味 —— 茄子
+· 炙烤 —— 油菜、洋葱、红薯、折耳根
+· 次元酒窖 —— 啤酒花、绯红葡萄、诡异葡萄
+· 暮色 —— 蕨菜
+· 果园 —— 草莓、蓝莓
+· 酒馆 —— 绿葡萄、冰葡萄、黄金葡萄
+· 末地 —— 末影薄荷
+· 下界 —— 灵魂辣椒、迷毒果
+· 幽匿 —— 回响作物
+
+农民会自己铺土壤、播种、施骨粉、收割并补种；葡萄类会先把整片藤架铺满，再插葡萄藤。
+箱子里备好对应的种子与土壤即可（葡萄另需酒馆的藤架方块）。
+
+暂不收录：水稻（需要水田）。
+
+新增其它森罗模组时，在 data/kaleidoscopecropaddons/kaleidoscope_crops/ 放一份 JSON 即可。
+'''
+
+[[mixins]]
+config="kaleidoscopecropaddons.mixins.json"
+
+[[mixins]]
+config="kaleidoscopecropaddons.client.mixins.json"
+
+[[mixins]]
+config="kaleidoscopecropaddons.compat.mixins.json"
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.228,21.2)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21,1.22)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="simukraft"
+    type="required"
+    versionRange="[1.0,)"
+    ordering="AFTER"
+    side="BOTH"
+    reason="Hooks the NSUK farmland box crop list and farmer work cycle."
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_cookery"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_chinesefood"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_grilling"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_dim_wine"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_twilight"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_orchard"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

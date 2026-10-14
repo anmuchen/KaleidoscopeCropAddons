@@ -1,0 +1,23 @@
+{
+  "mod": "kaleidoscope_cookery",
+  "prefix": "kc",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_cookery",
+  "discover": false,
+  "crops": [
+    {
+      "id": "tomato",
+      "seed": "kaleidoscope_cookery:tomato_seed",
+      "plant": "kaleidoscope_cookery:tomato_crop"
+    },
+    {
+      "id": "chili",
+      "seed": "kaleidoscope_cookery:chili_seed",
+      "plant": "kaleidoscope_cookery:chili_crop"
+    },
+    {
+      "id": "lettuce",
+      "seed": "kaleidoscope_cookery:lettuce_seed",
+      "plant": "kaleidoscope_cookery:lettuce_crop"
+    }
+  ]
+}

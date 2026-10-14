@@ -1,0 +1,28 @@
+{
+  "mod": "kaleidoscope_grilling",
+  "prefix": "kg",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_grilling",
+  "discover": false,
+  "crops": [
+    {
+      "id": "canola",
+      "seed": "kaleidoscope_grilling:canola_seeds",
+      "plant": "kaleidoscope_grilling:canola_crop"
+    },
+    {
+      "id": "onion",
+      "seed": "kaleidoscope_grilling:onion",
+      "plant": "kaleidoscope_grilling:onion_crop"
+    },
+    {
+      "id": "sweet_potato",
+      "seed": "kaleidoscope_grilling:sweet_potato",
+      "plant": "kaleidoscope_grilling:sweet_potato_crop"
+    },
+    {
+      "id": "houttuynia",
+      "seed": "kaleidoscope_grilling:houttuynia",
+      "plant": "kaleidoscope_grilling:houttuynia_crop"
+    }
+  ]
+}

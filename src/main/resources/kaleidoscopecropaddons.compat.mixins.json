@@ -1,0 +1,17 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.xiaolianganmuchen.kaleidoscopecropaddons.mixin.compat",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CropRightClickHarvestMixin",
+    "CropItemUseHarvestMixin",
+    "CropLikeRegistryGuardMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.4.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "mod": "kaleidoscope_twilight",
+  "prefix": "kt",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_twilight",
+  "discover": false,
+  "crops": [
+    {
+      "id": "fern",
+      "seed": "kaleidoscope_twilight:twilight_fern",
+      "plant": "kaleidoscope_twilight:twilight_fern_crop"
+    }
+  ]
+}

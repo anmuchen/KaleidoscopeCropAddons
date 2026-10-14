@@ -1,0 +1,13 @@
+{
+  "mod": "kaleidoscope_chinesefood",
+  "prefix": "kcf",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_chinesefood",
+  "discover": false,
+  "crops": [
+    {
+      "id": "eggplant",
+      "seed": "kaleidoscope_chinesefood:eggplant_seed",
+      "plant": "kaleidoscope_chinesefood:eggplant_crop"
+    }
+  ]
+}

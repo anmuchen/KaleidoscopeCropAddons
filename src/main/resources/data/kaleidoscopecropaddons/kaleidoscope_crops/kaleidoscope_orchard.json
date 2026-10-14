@@ -1,0 +1,21 @@
+{
+  "mod": "kaleidoscope_orchard",
+  "prefix": "ko",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_orchard",
+  "discover": false,
+  "crops": [
+    {
+      "id": "strawberry",
+      "seed": "kaleidoscope_orchard:strawberry",
+      "plant": "kaleidoscope_orchard:strawberry_plant"
+    },
+    {
+      "id": "blueberry",
+      "seed": "kaleidoscope_orchard:blueberry",
+      "plant": "kaleidoscope_orchard:blueberry_bush",
+      "soil_tag": "minecraft:dirt",
+      "soil_item": "minecraft:dirt",
+      "allow_non_crop_block": true
+    }
+  ]
+}

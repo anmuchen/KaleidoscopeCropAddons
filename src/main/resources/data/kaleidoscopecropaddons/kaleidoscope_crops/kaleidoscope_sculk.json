@@ -1,0 +1,20 @@
+{
+  "mod": "kaleidoscope_sculk",
+  "prefix": "ks",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_sculk",
+  "discover": false,
+  "crops": [
+    {
+      "id": "echo_crop",
+      "seed": "kaleidoscope_sculk:echo_seed",
+      "plant": "kaleidoscope_sculk:echo_crop",
+      "soil_blocks": [
+        "minecraft:sculk_catalyst"
+      ],
+      "soil_item": "minecraft:sculk_catalyst",
+      "harvest_blocks": [
+        "kaleidoscope_sculk:echo_crop_top"
+      ]
+    }
+  ]
+}

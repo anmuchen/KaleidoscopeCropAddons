@@ -1,0 +1,22 @@
+{
+  "mod": "kaleidoscope_nether",
+  "prefix": "kn",
+  "label": "source.kaleidoscopecropaddons.kaleidoscope_nether",
+  "discover": false,
+  "crops": [
+    {
+      "id": "soul_pepper",
+      "seed": "kaleidoscope_cookery:red_chili",
+      "plant": "kaleidoscope_nether:soul_pepper",
+      "soil_tag": "kaleidoscope_nether:soul_soil_sand",
+      "soil_item": "minecraft:soul_sand"
+    },
+    {
+      "id": "poisonous_fruit",
+      "seed": "kaleidoscope_nether:poisonous_fruit",
+      "plant": "kaleidoscope_nether:poisonous_fruit",
+      "soil_tag": "kaleidoscope_nether:soul_soil_sand",
+      "soil_item": "minecraft:soul_sand"
+    }
+  ]
+}
