@@ -21,5 +21,22 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # libs/ 被 gitignore，前置模组不随仓库分发。
+      # 构建前从 NSUK-CropAddons-API 的 Release 拉取，避免编译期缺少 nsukcropapi。
+      - name: Fetch NSUK Crop Addons API
+        run: |
+          mkdir -p libs
+          curl -fsSL -o libs/nsukcropapi-1.1.1.jar \
+            https://github.com/anmuchen/NSUK-CropAddons-API/releases/download/v1.1.1/nsukcropapi-1.1.1.jar
+          ls -l libs/
+
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon --stacktrace
+
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kaleidoscopecropaddons
+          path: build/libs/*.jar
+          if-no-files-found: warn
