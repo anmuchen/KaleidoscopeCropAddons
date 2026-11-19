@@ -9,36 +9,27 @@ displayName="森罗物语：作物附属"
 authors="XiaoLiang小亮 & 安沐尘"
 logoFile="logo.png"
 description='''
-森罗物语：作物附属。让雇佣农民通过农田盒种植森罗物语系列的作物 —— 既能种原版耕地上的，也能种需要特殊土壤（末地石 / 灵魂沙土 / 幽匿催发体 / 菌岩 / 冰块）与葡萄藤架的。
+森罗物语（Kaleidoscope）：作物附属。
+把森罗物语系列模组的作物接入农田盒，由雇佣农民统一种植、收割与补种。
 
-收录：
-· 厨房 —— 番茄、辣椒、生菜
-· 国味 —— 茄子
-· 炙烤 —— 油菜、洋葱、红薯、折耳根
-· 次元酒窖 —— 啤酒花、绯红葡萄、诡异葡萄
-· 暮色 —— 蕨菜
-· 果园 —— 草莓、蓝莓
-· 酒馆 —— 绿葡萄、冰葡萄、黄金葡萄
-· 末地 —— 末影薄荷
-· 下界 —— 灵魂辣椒、迷毒果
-· 幽匿 —— 回响作物
+收录 10 个来源、21 种作物：
+· 森罗物语：厨房 —— 番茄、辣椒、生菜
+· 森罗厨房：国味 —— 茄子
+· 森罗：炙烤 —— 油菜、洋葱、红薯、折耳根
+· 森罗物语：酒馆 —— 葡萄、冰葡萄、黄金葡萄
+· 森罗物语：次元酒窖 —— 啤酒花、绯红葡萄、诡异葡萄
+· 森罗物语：果园 —— 草莓、蓝莓
+· 森罗物语：末地 —— 末影薄荷（长在末地石上）
+· 森罗物语：下界 —— 灵魂辣椒、迷毒果（长在灵魂沙上）
+· 森罗物语：幽匿 —— 回响作物（长在幽匿催发体上）
+· 森罗物语：暮色 —— 蕨菜
 
-农民会自己铺土壤、播种、施骨粉、收割并补种；葡萄类会先把整片藤架铺满，再插葡萄藤。
-箱子里备好对应的种子与土壤即可（葡萄另需酒馆的藤架方块）。
+葡萄类沿用藤架，由农民自己立柱搭架。
+自定义土壤作物（末影薄荷、灵魂辣椒、迷毒果、回响作物）不需要水渠，整块地都会种满。
 
-暂不收录：水稻（需要水田）。
-
-新增其它森罗模组时，在 data/kaleidoscopecropaddons/kaleidoscope_crops/ 放一份 JSON 即可。
+未安装的源模组会自动跳过，不影响启动。
+新增其它森罗模组的作物时，在 data/kaleidoscopecropaddons/kaleidoscope_crops/ 放一份 JSON 即可。
 '''
-
-[[mixins]]
-config="kaleidoscopecropaddons.mixins.json"
-
-[[mixins]]
-config="kaleidoscopecropaddons.client.mixins.json"
-
-[[mixins]]
-config="kaleidoscopecropaddons.compat.mixins.json"
 
 [[dependencies.${mod_id}]]
     modId="neoforge"
@@ -53,6 +44,14 @@ config="kaleidoscopecropaddons.compat.mixins.json"
     versionRange="[1.21,1.22)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="nsukcropapi"
+    type="required"
+    versionRange="[1.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+    reason="农田盒作物注册表与五阶段作业接管由 NSUK 作物 API 提供"
 
 [[dependencies.${mod_id}]]
     modId="simukraft"
@@ -84,6 +83,13 @@ config="kaleidoscopecropaddons.compat.mixins.json"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
+    modId="kaleidoscope_tavern"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
     modId="kaleidoscope_dim_wine"
     type="optional"
     versionRange="[0,)"
@@ -91,14 +97,35 @@ config="kaleidoscopecropaddons.compat.mixins.json"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="kaleidoscope_twilight"
+    modId="kaleidoscope_orchard"
     type="optional"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod_id}]]
-    modId="kaleidoscope_orchard"
+    modId="kaleidoscope_end"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_nether"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_sculk"
+    type="optional"
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="kaleidoscope_twilight"
     type="optional"
     versionRange="[0,)"
     ordering="AFTER"

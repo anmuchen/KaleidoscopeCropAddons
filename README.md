@@ -1,11 +1,21 @@
 # 森罗物语：作物附属（Kaleidoscope Crop Addons）
 
 > 本说明提供中英文双语。中文在上，英文紧随其后。
-> This document is bilingual (Chinese / English). Chinese text comes first, followed by its English translation.
+> This document is bilingual (Chinese / English). Chinese text first, followed by its English translation.
 
 让 NSUK（New-Sim-U-Kraft）的雇佣农民通过农田工作盒种植**森罗物语系列**模组的作物 —— 既包括能种在原版耕地上的，也包括需要特殊土壤的，以及带藤架的葡萄类。
 
 Lets the hired farmers of NSUK (New-Sim-U-Kraft) grow crops from the **Kaleidoscope (森罗物语) series** mods through the Farm Work Box — covering those that grow on vanilla farmland, those requiring special soils, and trellis-grown grape varieties.
+
+## 版本说明 / Version Note
+
+**2.0.0 起本模组改为纯数据模组。** 作业逻辑（铺土、播种、骨粉、收割、补种、存档字段、选择界面）全部上移到 [NSUK 作物 API](https://github.com/anmuchen/NSUK-CropAddons-API)；本模组只剩两个类与一叠作物 JSON，不再自带 mixin。
+
+1.3.x 及更早版本是独立实现，内含 20 余个类与 12 个 mixin。两者**存档不通用**，请勿混装。
+
+> **Since 2.0.0 this is a data-only mod.** All work logic (soiling, sowing, bonemealing, harvesting, replanting, save fields, selection UI) moved into [NSUK Crop Addons API](https://github.com/anmuchen/NSUK-CropAddons-API). This mod now contains just two classes and a set of crop JSONs, with no mixins of its own.
+>
+> 1.3.x and earlier were standalone implementations with 20+ classes and 12 mixins. **Save data is not compatible between the two** — do not mix them.
 
 ## 环境要求 / Environment Requirements
 
@@ -13,29 +23,9 @@ Lets the hired farmers of NSUK (New-Sim-U-Kraft) grow crops from the **Kaleidosc
 |---|---|
 | Minecraft | 1.21.1 |
 | NeoForge | 21.1.228 或更高（21.2 之前 / before 21.2） |
-| New-Sim-U-Kraft（`simukraft`） | 1.0.0 或更高，必需前置（or newer, **required**） |
+| NSUK 作物 API（`nsukcropapi`） | 1.0.0 或更高，必需前置（or newer, **required**） |
+| NSUK 本体（`simukraft`） | 1.0.0 或更高，必需前置（or newer, **required**） |
 | 森罗物语各模组 Mods | 可选，装了才会出现对应作物（optional; crops appear only if installed） |
-
-## 从源码构建 / Building from Source
-
-```bash
-gradlew build
-```
-
-> ⚠️ **注意 / Note**：`libs/` 目录下的第三方依赖**不随仓库分发**，本地构建前请自行放入：
->
-> ⚠️ Third-party dependencies in `libs/` are **not distributed with this repository**. Place them locally before building:
->
-> | 文件 / File | 说明 / Description |
-> |---|---|
-> | `New-Sim-U-Kraft-2.2.0-neoforge-1.21.1.jar` | NSUK 本体（必需 / required） |
-> | `ldlib2-neoforge-1.21.1-2.2.40-all.jar` | LDLib2（森罗物语前置 / Kaleidoscope prerequisite） |
-> | `taffy-1.1.4.jar` | Taffy（森罗物语前置 / Kaleidoscope prerequisite） |
-> | `yoga-1.0.0.jar` | Yoga（森罗物语前置 / Kaleidoscope prerequisite） |
-> | `ftb-ultimine-stub.jar` | FTB Ultimine 的 stub |
->
-> 这些是别人的模组，请按各自许可自行获取。
-> These are third-party mods; obtain them under their respective licenses.
 
 ## 支持的作物 / Supported Crops
 
@@ -55,9 +45,9 @@ gradlew build
 | 下界 `kaleidoscope_nether` | 灵魂辣椒、迷毒果 / Soul Chili, Toxic Berry | 灵魂沙 / 灵魂土（Soul Sand / Soul Soil） |
 | 幽匿 `kaleidoscope_sculk` | 回响作物 / Echo Crop | 幽匿催发体 / Sculk Catalyst |
 
-箱子里备好对应种子与土壤，农民就会自己动手。
+共 10 个来源、21 种作物。箱子里备好对应种子与土壤，农民就会自己动手。
 
-Stock the matching seeds and soil in the box, and the farmer will get to work.
+10 sources, 21 crops. Stock the matching seeds and soil in the box, and the farmer will get to work.
 
 ## 功能特性 / Features
 
@@ -73,6 +63,22 @@ Stock the matching seeds and soil in the box, and the farmer will get to work.
   - *When a source has multiple crops, the list is collapsed by default; click to expand (selection is remembered).*
 - **按来源开关 / Per-source toggles**：配置页可逐模组启用/关闭，也可单独禁用某个作物 id
   - *The config screen lets you enable/disable each mod, or disable an individual crop id.*
+
+## 从源码构建 / Building from Source
+
+```bash
+gradlew build
+```
+
+> ⚠️ **注意 / Note**：`libs/` 目录下的第三方依赖**不随仓库分发**，本地构建前请自行放入：
+>
+> ⚠️ Third-party dependencies in `libs/` are **not distributed with this repository**. Place them locally before building:
+>
+> | 文件 / File | 说明 / Description |
+> |---|---|
+> | `nsukcropapi-1.1.1.jar` | NSUK 作物 API（必需 / required），见 [Releases](https://github.com/anmuchen/NSUK-CropAddons-API/releases) |
+
+产物 / Output：`build/libs/kaleidoscopecropaddons-2.0.0.jar`
 
 ## 新增其它森罗模组的作物 / Adding Crops from Other Kaleidoscope Mods
 
@@ -101,7 +107,8 @@ Drop a JSON file under `src/main/resources/data/kaleidoscopecropaddons/kaleidosc
 - `soil_tag`（方块标签 / block tag）与 `soil_blocks`（直接列方块 id / list block ids directly）**二选一**即可；可用的土壤物品会自动由标签推导 / choose one; valid soil items are auto-derived from the tag
 - `layout` 为 `trellis` 时还需 `fruit_block` / `fruit_item` / `support_block`，必要时加 `plant_mature` / when `layout` is `trellis`, you also need `fruit_block` / `fruit_item` / `support_block`, plus `plant_mature` if required
 - `soil_exclude` 可把标签里不想用的方块排除掉（例如黄金葡萄排除岩浆块）/ `soil_exclude` removes unwanted blocks from the tag (e.g. gold grapes exclude magma blocks)
-- 语言键 `source.kaleidoscopecropaddons.kaleidoscope_xxx` 决定列表里显示的名字 / the language key `source.kaleidoscopecropaddons.kaleidoscope_xxx` sets the name shown in the list
+- 语言键 `source.kaleidoscopecropaddons.kaleidoscope_xxx` 决定列表里显示的名字；也可在 JSON 里用 `name_key` 直接指定 / the language key `source.kaleidoscopecropaddons.kaleidoscope_xxx` sets the name shown in the list; alternatively set `name_key` in the JSON
+- 字段的完整定义与显示名解析顺序见 [NSUK 作物 API 的 README](https://github.com/anmuchen/NSUK-CropAddons-API#readme) / for full field definitions and display-name resolution order, see the API's README
 
 ## 许可 / License
 

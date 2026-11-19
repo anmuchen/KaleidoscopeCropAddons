@@ -68,23 +68,10 @@ configurations {
 }
 
 dependencies {
-    // Host mod: New Sim U Kraft (simukraft) — provides the farmland box and hired farmer system we hook into.
-    // Kept as a local jar because it is not published to any public Maven repository.
-    compileOnly files('libs/New-Sim-U-Kraft-2.2.0-neoforge-1.21.1.jar')
-    localRuntime files('libs/New-Sim-U-Kraft-2.2.0-neoforge-1.21.1.jar')
-    // LDLib2 provides the GUI toolkit used by the farmland box screens (shipped with the host mod).
-    compileOnly files('libs/ldlib2-neoforge-1.21.1-2.2.40-all.jar')
-    // JarJar-nested libraries of LDLib2 (layout engine + style model), needed to compile the screens.
-    compileOnly files('libs/taffy-1.1.4.jar')
-    compileOnly files('libs/yoga-1.0.0.jar')
-
-    // FTB Ultimine — SOFT dependency, compileOnly only.
-    // Its CropLikeRegistry#checkForSingleCropHarvesting runs on EVERY right-click (no Ultimine key
-    // needed) and hijacks any mature CropBlock, resetting it to age 0. That conflicts with our own
-    // right-click harvest, so we veto it for our catalog crops via a soft mixin.
-    // The stub jar is a class-only repack of the real mod (libs/ftb-ultimine-stub.jar) used purely
-    // so the mixin target resolves at compile time; it is NOT shipped or loaded at runtime.
-    compileOnly files('libs/ftb-ultimine-stub.jar')
+    // 前置：NSUK 作物 API（只提供作物注册表与作业流程，编译期需要）。
+    // 该模组未发布到公共 Maven，用本地 jar；本地构建前把 nsukcropapi-1.1.1.jar 放进 libs/。
+    compileOnly files('libs/nsukcropapi-1.1.1.jar')
+    localRuntime files('libs/nsukcropapi-1.1.1.jar')
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
